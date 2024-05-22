@@ -1,7 +1,7 @@
 {
   "name": "iyzico-iyzipay-client",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A TypeScript client for the iyzipay API.",
   "keywords": ["iyzipay", "api", "typescript", "payment"],
   "homepage": "https://github.com/centrual/iyzico-iyzipay-client#readme",
