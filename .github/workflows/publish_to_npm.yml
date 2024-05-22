@@ -1,0 +1,53 @@
+name: Publish To NPM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint code
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Compile TypeScript
+        run: yarn compile
+
+      - name: Copy package.json to dist
+        run: |
+          cp package.json dist/
+          cp README.md dist/
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Update main and types fields in package.json
+        run: |
+          jq '.main = "index.js" | .types = "index.d.ts"' dist/package.json > dist/package.tmp.json
+          mv dist/package.tmp.json dist/package.json
+
+      - name: Publish to NPM
+        run: |
+          cd dist
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm publish --registry=https://registry.npmjs.org

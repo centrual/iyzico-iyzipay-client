@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "incremental": false,
+    "target": "es2020",
+    "lib": [
+      "ESNext"
+    ],
+    "moduleDetection": "auto",
+    "module": "ESNext",
+    "rootDir": "./src/",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "removeComments": true,
+    "emitBOM": false,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
