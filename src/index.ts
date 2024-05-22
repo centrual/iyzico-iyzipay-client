@@ -12,10 +12,11 @@ export const createIyzipayClient = (apiKey: string, apiSecret: string, baseURL: 
 
   return {
     axiosInstance,
-    Constants,
     subscriptions: SubscriptionsApiFactory(undefined, undefined, axiosInstance),
     operations: OperationsApiFactory(undefined, undefined, axiosInstance),
     testing: TestingApiFactory(undefined, undefined, axiosInstance),
     subscriptionInitialization: SubscriptionInitializationApiFactory(undefined, undefined, axiosInstance),
   };
 };
+
+export { Constants };

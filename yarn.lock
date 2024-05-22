@@ -1027,10 +1027,10 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
-iyzico-iyzipay@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/iyzico-iyzipay/-/iyzico-iyzipay-0.1.0.tgz#482a288bdd7e9f44022dd257429c00c04a348e33"
-  integrity sha512-FxvT9gY5ZpDRjx/0YIh8tXSej6/tTF3a4dW+9HR0lx5SPYeV7+DJU06lswf+OVpdVQQt+Kp2HOtF5vRsuohnOw==
+iyzico-iyzipay@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/iyzico-iyzipay/-/iyzico-iyzipay-0.1.1.tgz#0e1e0acd54ab8e53010ca10bccd86f52fa966fd6"
+  integrity sha512-cx/QYfupnfc/afbt4PqJJmaFR+1trXe7+bf2dBex6R31Rxbkl/PiaMuLsTdzmQ3rCKNxpWc2dAEWQN/CU/VxYA==
   dependencies:
     axios "1.7.2"
 
