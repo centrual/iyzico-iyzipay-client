@@ -20,3 +20,5 @@ export const createIyzipayClient = (apiKey: string, apiSecret: string, baseURL: 
 };
 
 export { Constants };
+
+export * from "iyzico-iyzipay";
