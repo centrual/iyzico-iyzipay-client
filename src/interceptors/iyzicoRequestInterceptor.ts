@@ -1,7 +1,7 @@
-import { InternalAxiosRequestConfig } from "axios";
-import Constants from "../constants";
-import { extractPathFromUrl, generateRandomString } from "../utils/utils";
-import { generateAuthorizationHeaderContent } from "../utils/headerGenerator/IyzicoHeaderGenerator";
+import {InternalAxiosRequestConfig} from "axios";
+import Constants from "../constants.js";
+import {extractPathFromUrl, generateRandomString} from "../utils/utils.js";
+import {generateAuthorizationHeaderContent} from "../utils/headerGenerator/IyzicoHeaderGenerator.js";
 
 /**
  * Iyzico API isteklerine otomatik olarak header ekleyen interceptor.

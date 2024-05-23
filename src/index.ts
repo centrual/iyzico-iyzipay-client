@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import Constants from "./constants.js";
 import { OperationsApiFactory, SubscriptionInitializationApiFactory, SubscriptionsApiFactory, TestingApiFactory } from "iyzico-iyzipay";
-import { iyzicoRequestInterceptor } from "./interceptors/iyzicoRequestInterceptor";
+import { iyzicoRequestInterceptor } from "./interceptors/iyzicoRequestInterceptor.js";
 
 export const createIyzipayClient = (apiKey: string, apiSecret: string, baseURL: string = Constants.IYZICO_HOSTS.SANDBOX) => {
   const axiosInstance: AxiosInstance = axios.create({
