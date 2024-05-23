@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { generateRandomString, extractPathFromUrl, createSha1SummaryAsBase64, convertJsonToPKIString, convertNestedValueToString } from "../src/utils/utils";
+import { convertJsonToPKIString, convertNestedValueToString, createSha1SummaryAsBase64, extractPathFromUrl, generateRandomString } from "../../src/utils/utils";
 
 describe("Utils Functions", () => {
   test("generateRandomString should generate a string of the correct length", () => {

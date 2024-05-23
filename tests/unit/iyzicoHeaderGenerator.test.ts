@@ -1,8 +1,8 @@
 import { describe, expect, test, vi } from "vitest";
-import { generateAuthorizationHeaderContent } from "../src/utils/headerGenerator/IyzicoHeaderGenerator";
-import * as v1 from "../src/utils/headerGenerator/strategies/v1";
-import * as v2 from "../src/utils/headerGenerator/strategies/v2";
-import { IyzicoHeaderGeneratorData } from "../src/utils/headerGenerator/IyzicoHeaderGenerator.types";
+import { generateAuthorizationHeaderContent } from "../../src/utils/headerGenerator/IyzicoHeaderGenerator";
+import * as v1 from "../../src/utils/headerGenerator/strategies/v1";
+import * as v2 from "../../src/utils/headerGenerator/strategies/v2";
+import { IyzicoHeaderGeneratorData } from "../../src/utils/headerGenerator/IyzicoHeaderGenerator.types";
 
 vi.mock("../src/utils/headerGenerator/strategies/v1");
 vi.mock("../src/utils/headerGenerator/strategies/v2");
