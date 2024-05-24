@@ -40,6 +40,9 @@ test("should initialize subscription checkout form", async () => {
       callbackUrl: "http://localhost:3000/callback",
     });
 
+    console.log(response.data.checkoutFormContent);
+    console.log(response.data.token);
+
     expect(response.status).toBe(200);
     expect(response.data.status).toBe("success");
   } catch (e) {
