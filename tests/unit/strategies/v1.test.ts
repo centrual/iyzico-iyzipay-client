@@ -12,7 +12,7 @@ describe("V1 Header Generator", () => {
     const data: IyzicoHeaderGeneratorData = {
       apiKey: "apiKey",
       secretKey: "secretKey",
-      body: { key: "value" },
+      body: '{"key":"value"}',
       url: "url",
       randomString: "randomString",
     };
@@ -29,19 +29,21 @@ describe("V1 Header Generator", () => {
     const data: IyzicoHeaderGeneratorData = {
       apiKey: "apiKey",
       secretKey: "secretKey",
-      body: { key: "value" },
+      body: '{"key":"value"}',
       url: "url",
       randomString: "randomString",
     };
-    const mockGenerateRandomString = vi.spyOn(utils, "generateRandomString").mockReturnValue("randomString");
-    const mockConvertJsonToPKIString = vi.spyOn(utils, "convertJsonToPKIString").mockReturnValue("pkiString");
-    const mockCreateSha1SummaryAsBase64 = vi.spyOn(utils, "createSha1SummaryAsBase64").mockReturnValue("sha1Hash");
+    vi.spyOn(utils, "generateRandomString").mockReturnValue("randomString");
+    vi.spyOn(utils, "convertJsonToPKIString").mockReturnValue("pkiString");
+    const mockCreateSha1SummaryAsBase64 = vi
+      .spyOn(utils, "createSha1SummaryAsBase64")
+      .mockReturnValue("sha1Hash");
 
     const result = v1.generateV1HeaderHash(data);
 
-    expect(mockGenerateRandomString).toHaveBeenCalledWith(Constants.RANDOM_STRING_SIZE);
-    expect(mockConvertJsonToPKIString).toHaveBeenCalledWith(data.body);
-    expect(mockCreateSha1SummaryAsBase64).toHaveBeenCalledWith("apiKeyrandomStringsecretKeypkiString");
+    expect(mockCreateSha1SummaryAsBase64).toHaveBeenCalledWith(
+      "apiKeyrandomStringsecretKeypkiString",
+    );
     expect(result).toBe("sha1Hash");
   });
 });

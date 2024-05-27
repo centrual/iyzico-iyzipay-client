@@ -17,7 +17,12 @@ export const generateV1AuthorizationHeaderContent = (data: IyzicoHeaderGenerator
  * @returns Oluşturulan header hash değeri
  */
 export const generateV1HeaderHash = (data: IyzicoHeaderGeneratorData): string => {
-  const { apiKey, secretKey, body } = data;
+  const { apiKey, secretKey } = data;
+  let { body } = data;
+
+  if (body == "" || body == null) {
+    body = "{}";
+  }
 
   const pkiString = convertJsonToPKIString(JSON.parse(body as string));
 
