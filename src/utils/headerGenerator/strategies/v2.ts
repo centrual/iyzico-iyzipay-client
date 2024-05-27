@@ -24,7 +24,7 @@ export const createSignature = (data: IyzicoHeaderGeneratorData): string => {
 
   return crypto
     .createHmac("sha256", data.secretKey)
-    .update(data.randomString + data.url + body)
+    .update(data.randomString + data.url + (body == null ? "{}" : body))
     .digest("hex");
 };
 
@@ -34,6 +34,11 @@ export const createSignature = (data: IyzicoHeaderGeneratorData): string => {
  * @param signature - Oluşturulan imza
  * @returns Oluşturulan base64 formatındaki authorization parametresi
  */
-export const createBase64AuthorizationParams = (data: IyzicoHeaderGeneratorData, signature: string): string => {
-  return Buffer.from(`apiKey:${data.apiKey}&randomKey:${data.randomString}&signature:${signature}`).toString("base64");
+export const createBase64AuthorizationParams = (
+  data: IyzicoHeaderGeneratorData,
+  signature: string,
+): string => {
+  return Buffer.from(
+    `apiKey:${data.apiKey}&randomKey:${data.randomString}&signature:${signature}`,
+  ).toString("base64");
 };

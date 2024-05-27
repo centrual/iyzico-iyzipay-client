@@ -26,6 +26,10 @@ export const iyzicoRequestInterceptor = (apiKey: string, apiSecret: string, base
       body: config.data,
     });
 
+    if (config.data == null) {
+      config.data = {};
+    }
+
     config.headers.set(Constants.RANDOM_HEADER_NAME, randomString);
     config.headers.set(Constants.CLIENT_VERSION, Constants.CLIENT_VERSION_VALUE);
     config.headers.set("Authorization", authorizationHeaderContent);

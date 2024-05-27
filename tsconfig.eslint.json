@@ -1,8 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "tests/**/*.ts", "vitest.config.ts"],
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "vitest.config.ts",
+    "globals.d.ts"
+  ],
   "exclude": [
     "node_modules/**/*",
-    "dist/**/*"
+    "dist/**/*",
+    "webhook/**/*"
   ]
 }

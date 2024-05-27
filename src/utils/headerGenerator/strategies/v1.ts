@@ -1,6 +1,6 @@
 import {IyzicoHeaderGeneratorData} from "../IyzicoHeaderGenerator.types.js";
 import Constants from "../../../constants.js";
-import {convertJsonToPKIString, createSha1SummaryAsBase64, generateRandomString} from "../../utils.js";
+import {convertJsonToPKIString, createSha1SummaryAsBase64} from "../../utils.js";
 
 /**
  * V1 header hash değerini oluşturur ve header içeriğini oluşturur.
@@ -19,8 +19,7 @@ export const generateV1AuthorizationHeaderContent = (data: IyzicoHeaderGenerator
 export const generateV1HeaderHash = (data: IyzicoHeaderGeneratorData): string => {
   const { apiKey, secretKey, body } = data;
 
-  const randomString = generateRandomString(Constants.RANDOM_STRING_SIZE);
-  const pkiString = convertJsonToPKIString(body);
+  const pkiString = convertJsonToPKIString(JSON.parse(body as string));
 
-  return createSha1SummaryAsBase64(`${apiKey}${randomString}${secretKey}${pkiString}`);
+  return createSha1SummaryAsBase64(apiKey + data.randomString + secretKey + pkiString);
 };

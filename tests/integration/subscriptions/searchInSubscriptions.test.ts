@@ -7,17 +7,21 @@ const iyzipay = createIyzipayClient(
   Constants.IYZICO_HOSTS.SANDBOX,
 );
 
-test("should upgrade subscription", async () => {
+test("should search subscriptions", async () => {
   try {
-    const response = await iyzipay.subscriptions.upgradeSubscription(
-      "6508c266-837e-422b-aef8-1cd23e8ccda5",
-      {
-        newPricingPlanReferenceCode: "9abcf485-8d55-4da5-b94b-4076b42fd6a3",
-        upgradePeriod: "NOW",
-      },
+    const response = await iyzipay.subscriptions.searchInSubscriptions(
+      1,
+      10,
+      "7fe2590c-655e-4e1d-b722-0bae17acd007",
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
     );
 
-    console.log(response.data);
+    console.dir(response.data, { depth: Infinity });
     expect(response.status).toBe(200);
     expect(response.data.status).toBe("success");
   } catch (e) {

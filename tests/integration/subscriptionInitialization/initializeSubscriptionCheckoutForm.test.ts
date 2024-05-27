@@ -1,13 +1,14 @@
 import { expect, test } from "vitest";
-import { Constants, createIyzipayClient } from "../../../src";
 import { v4 as uuidv4 } from "uuid";
-import { config } from "dotenv";
+import { Constants, createIyzipayClient } from "../../../src";
 
-config();
+const iyzipay = createIyzipayClient(
+  process.env.IYZIPAY_API_KEY!,
+  process.env.IYZIPAY_SECRET!,
+  Constants.IYZICO_HOSTS.SANDBOX,
+);
 
 test("should initialize subscription checkout form", async () => {
-  const iyzipay = createIyzipayClient(process.env.IYZIPAY_API_KEY!, process.env.IYZIPAY_SECRET!, Constants.IYZICO_HOSTS.SANDBOX);
-
   const conversationId: string = uuidv4();
 
   try {
@@ -36,8 +37,8 @@ test("should initialize subscription checkout form", async () => {
           country: "Turkey",
         },
       },
-      pricingPlanReferenceCode: "d6a852c5-a70f-4363-b9e0-b77692bd96a5",
-      callbackUrl: "http://localhost:3000/callback",
+      pricingPlanReferenceCode: "b8278941-1415-46e0-8c05-a4f0e3a66971",
+      callbackUrl: "https://201c-78-163-157-177.ngrok-free.app/callback",
     });
 
     console.log(response.data.checkoutFormContent);
