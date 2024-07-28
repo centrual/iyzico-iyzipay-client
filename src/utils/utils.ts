@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import crypto from "node:crypto";
 
 /**
  * Verilen sayıda rastgele karakterlerden oluşan bir string döner.
