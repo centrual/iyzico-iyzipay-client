@@ -1,14 +1,14 @@
 import {IyzicoHeaderGeneratorData} from "../IyzicoHeaderGenerator.types.js";
-import crypto from "crypto";
 import Constants from "../../../constants.js";
+import {hmacSha256Hex} from "../../utils";
 
 /**
  * V2 header içeriğini oluşturur.
  * @param data - Header içeriği oluşturulacak veri
  * @returns Oluşturulan header içeriği
  */
-export const generateV2AuthorizationHeaderContent = (data: IyzicoHeaderGeneratorData): string => {
-  const signature = createSignature(data);
+export const generateV2AuthorizationHeaderContent = async (data: IyzicoHeaderGeneratorData): Promise<string> => {
+  const signature = await createSignature(data);
   const base64AuthorizationParams = createBase64AuthorizationParams(data, signature);
 
   return `${Constants.IYZI_WS_HEADER_NAME_V2} ${base64AuthorizationParams}`;
@@ -19,13 +19,10 @@ export const generateV2AuthorizationHeaderContent = (data: IyzicoHeaderGenerator
  * @param data - İmza oluşturulacak veriler
  * @returns Oluşturulan hex formatındaki imza
  */
-export const createSignature = (data: IyzicoHeaderGeneratorData): string => {
+export const createSignature = async (data: IyzicoHeaderGeneratorData): Promise<string> => {
   const body = data.body as string;
-
-  return crypto
-    .createHmac("sha256", data.secretKey)
-    .update(data.randomString + data.url + (body == null ? "{}" : body))
-    .digest("hex");
+  
+  return await hmacSha256Hex(data.randomString + data.url + (body == null ? "{}" : body), data.secretKey);
 };
 
 /**

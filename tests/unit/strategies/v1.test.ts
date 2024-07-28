@@ -8,7 +8,7 @@ import Constants from "../../../src/constants";
 vi.mock("../../src/utils/utils");
 
 describe("V1 Header Generator", () => {
-  test("generateV1AuthorizationHeaderContent should return correct header content", () => {
+  test("generateV1AuthorizationHeaderContent should return correct header content", async () => {
     const data: IyzicoHeaderGeneratorData = {
       apiKey: "apiKey",
       secretKey: "secretKey",
@@ -18,14 +18,14 @@ describe("V1 Header Generator", () => {
     };
     vi.spyOn(utils, "generateRandomString").mockReturnValue("mockRandomString");
     vi.spyOn(utils, "convertJsonToPKIString").mockReturnValue("mockPkiString");
-    vi.spyOn(utils, "createSha1SummaryAsBase64").mockReturnValue("mockSha1Hash");
+    vi.spyOn(utils, "createSha1SummaryAsBase64").mockReturnValue(Promise.resolve("mockSha1Hash"));
 
-    const result = v1.generateV1AuthorizationHeaderContent(data);
+    const result = await v1.generateV1AuthorizationHeaderContent(data);
 
     expect(result).toBe(`${Constants.IYZI_WS_HEADER_NAME} apiKey:mockSha1Hash`);
   });
 
-  test("generateV1HeaderHash should return correct hash value", () => {
+  test("generateV1HeaderHash should return correct hash value", async () => {
     const data: IyzicoHeaderGeneratorData = {
       apiKey: "apiKey",
       secretKey: "secretKey",
@@ -37,9 +37,9 @@ describe("V1 Header Generator", () => {
     vi.spyOn(utils, "convertJsonToPKIString").mockReturnValue("pkiString");
     const mockCreateSha1SummaryAsBase64 = vi
       .spyOn(utils, "createSha1SummaryAsBase64")
-      .mockReturnValue("sha1Hash");
+      .mockReturnValue(Promise.resolve("sha1Hash"));
 
-    const result = v1.generateV1HeaderHash(data);
+    const result = await v1.generateV1HeaderHash(data);
 
     expect(mockCreateSha1SummaryAsBase64).toHaveBeenCalledWith(
       "apiKeyrandomStringsecretKeypkiString",

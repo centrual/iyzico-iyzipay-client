@@ -22,9 +22,9 @@ describe("Utils Functions", () => {
     expect(path).toBe("/path/to/resource");
   });
 
-  test("createSha1SummaryAsBase64 should create a valid SHA1 base64 hash", () => {
+  test("createSha1SummaryAsBase64 should create a valid SHA1 base64 hash", async () => {
     const data = "test data";
-    const hash = createSha1SummaryAsBase64(data);
+    const hash = await createSha1SummaryAsBase64(data);
     const expectedHash = "9I3YU4IIYIFsddVND1hNyGMyenw="; // Correct precomputed hash for "test data"
     expect(hash).toBe(expectedHash);
   });
