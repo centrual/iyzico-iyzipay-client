@@ -10,7 +10,7 @@ import {generateAuthorizationHeaderContent} from "../utils/headerGenerator/Iyzic
  * @param baseUrl - API'nin temel adresi
  */
 export const iyzicoRequestInterceptor = (apiKey: string, apiSecret: string, baseUrl: string) => {
-  return (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
+  return async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
     if (!config.url) {
       throw new Error("URL is required");
     }
@@ -18,7 +18,7 @@ export const iyzicoRequestInterceptor = (apiKey: string, apiSecret: string, base
     const urlPath = extractPathFromUrl(config.url, baseUrl);
     const randomString = generateRandomString(Constants.RANDOM_STRING_SIZE);
 
-    const authorizationHeaderContent = generateAuthorizationHeaderContent({
+    const authorizationHeaderContent = await generateAuthorizationHeaderContent({
       apiKey,
       randomString,
       secretKey: apiSecret,
