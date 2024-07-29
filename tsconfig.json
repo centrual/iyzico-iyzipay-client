@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "incremental": false,
-    "target": "ESNext",
+    "target": "ES6",
     "lib": [
       "ESNext"
     ],
     "moduleDetection": "auto",
-    "module": "ESNext",
+    "module": "CommonJS",
     "rootDir": "./src/",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,

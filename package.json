@@ -1,7 +1,7 @@
 {
   "name": "iyzico-iyzipay-client",
   "license": "MIT",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A TypeScript client for the iyzipay API.",
   "keywords": [
     "iyzipay",
