@@ -1,5 +1,5 @@
 import {IyzicoHeaderGeneratorData} from "../IyzicoHeaderGenerator.types.js";
-import crypto from "crypto";
+import crypto from "node:crypto";
 import Constants from "../../../constants.js";
 
 /**
