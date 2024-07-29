@@ -8,7 +8,7 @@ vi.mock("../src/utils/headerGenerator/strategies/v1");
 vi.mock("../src/utils/headerGenerator/strategies/v2");
 
 describe("IyzicoHeaderGenerator", () => {
-  test("should call generateV2AuthorizationHeaderContent for /v2/ URL", async () => {
+  test("should call generateV2AuthorizationHeaderContent for /v2/ URL", () => {
     const data: IyzicoHeaderGeneratorData = {
       url: "https://api.example.com/v2/resource",
       apiKey: "apiKey",
@@ -16,8 +16,8 @@ describe("IyzicoHeaderGenerator", () => {
       body: "",
       randomString: "",
     };
-    const mockGenerateV2 = vi.spyOn(v2, "generateV2AuthorizationHeaderContent").mockReturnValue(Promise.resolve("v2Header"));
-    const result = await generateAuthorizationHeaderContent(data);
+    const mockGenerateV2 = vi.spyOn(v2, "generateV2AuthorizationHeaderContent").mockReturnValue("v2Header");
+    const result = generateAuthorizationHeaderContent(data);
 
     expect(mockGenerateV2).toHaveBeenCalledWith(data);
     expect(result).toBe("v2Header");
@@ -25,7 +25,7 @@ describe("IyzicoHeaderGenerator", () => {
     mockGenerateV2.mockRestore();
   });
 
-  test("should call generateV1AuthorizationHeaderContent for non-/v2/ URL", async () => {
+  test("should call generateV1AuthorizationHeaderContent for non-/v2/ URL", () => {
     const data: IyzicoHeaderGeneratorData = {
       url: "https://api.example.com/resource",
       apiKey: "apiKey",
@@ -33,8 +33,8 @@ describe("IyzicoHeaderGenerator", () => {
       body: "",
       randomString: "",
     };
-    const mockGenerateV1 = vi.spyOn(v1, "generateV1AuthorizationHeaderContent").mockReturnValue(Promise.resolve("v1Header"));
-    const result = await generateAuthorizationHeaderContent(data);
+    const mockGenerateV1 = vi.spyOn(v1, "generateV1AuthorizationHeaderContent").mockReturnValue("v1Header");
+    const result = generateAuthorizationHeaderContent(data);
 
     expect(mockGenerateV1).toHaveBeenCalledWith(data);
     expect(result).toBe("v1Header");
