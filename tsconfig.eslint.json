@@ -4,7 +4,8 @@
     "src/**/*.ts",
     "tests/**/*.ts",
     "vitest.config.ts",
-    "globals.d.ts"
+    "globals.d.ts",
+    "eslint.config.mjs"
   ],
   "exclude": [
     "node_modules/**/*",
