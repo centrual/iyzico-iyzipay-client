@@ -1,7 +1,7 @@
 {
   "name": "iyzico-iyzipay-client",
   "license": "MIT",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A TypeScript client for the iyzipay API.",
   "keywords": [
     "iyzipay",
@@ -22,7 +22,6 @@
     "email": "oguz.ozcan@vennyx.com",
     "url": "https://github.com/centrual"
   },
-  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -33,7 +32,7 @@
     "testui": "vitest --ui"
   },
   "dependencies": {
-    "iyzico-iyzipay": "0.1.14"
+    "iyzico-iyzipay": "0.1.15"
   },
   "devDependencies": {
     "@eslint/js": "9.3.0",
